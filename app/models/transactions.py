@@ -8,9 +8,10 @@ class Transaction(db.Model):
     __tablename__ = 'transactions'
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    category_id = db.Column(db.Integer, nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey(
+        "categories.id"), nullable=False)
     amount = db.Column(db.Float, nullable=False)
     receipt_url = db.Column(db.String)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
