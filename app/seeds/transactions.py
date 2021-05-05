@@ -19,5 +19,5 @@ def seed_transactions():
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_transactions():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE transactions RESTART IDENTITY CASCADE;')
     db.session.commit()

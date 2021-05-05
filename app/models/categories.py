@@ -22,7 +22,8 @@ class Category(db.Model):
     def to_dict(self):
         return {
             # "id": self.id,
-            "category": self.category
+            "category": self.category,
+            "sub_categories": [sub_categories.to_dict() for sub_categories in self.sub_categories]
             # "created_at": self.created_at,
             # "updated_at": self.updated_at
         }

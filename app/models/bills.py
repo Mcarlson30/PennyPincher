@@ -26,7 +26,7 @@ class Bill(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "name": self.name,
-            "category_id": self.category_id,
+            "category_id": self.category.to_dict(),
             "amount": self.amount,
             "due_date": self.due_date,
             "created_at": self.created_at,

@@ -20,5 +20,5 @@ def seed_bills():
 # TRUNCATE Removes all the data from the table, and resets
 # the auto incrementing primary key
 def undo_bills():
-    db.session.execute('TRUNCATE users RESTART IDENTITY CASCADE;')
+    db.session.execute('TRUNCATE bills RESTART IDENTITY CASCADE;')
     db.session.commit()
