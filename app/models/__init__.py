@@ -4,3 +4,4 @@ from .bills import Bill
 from .budget import Budget
 from .categories import Category
 from .transactions import Transaction
+from .sub_categories import SubCategory

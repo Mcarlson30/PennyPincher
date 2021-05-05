@@ -26,7 +26,7 @@ class Transaction(db.Model):
             "id": self.id,
             "user_id": self.user_id,
             "description": self.description,
-            "category": category.to_dict(),
+            "category": self.category.to_dict(),
             "amount": self.amount,
             "receipt_url": self.receipt_url,
             "created_at": self.created_at,

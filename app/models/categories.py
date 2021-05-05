@@ -16,11 +16,13 @@ class Category(db.Model):
     transaction = db.relationship('Transaction', back_populates='category')
     bills = db.relationship('Bill', back_populates='category')
     budgets = db.relationship('Budget', back_populates='category')
+    sub_categories = db.relationship(
+        'SubCategory', back_populates='categories')
 
     def to_dict(self):
         return {
-            "id": self.id,
-            "category": self.category,
-            "created_at": self.created_at,
-            "updated_at": self.updated_at
+            # "id": self.id,
+            "category": self.category
+            # "created_at": self.created_at,
+            # "updated_at": self.updated_at
         }
