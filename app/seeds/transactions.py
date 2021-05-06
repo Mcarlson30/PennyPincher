@@ -7,7 +7,7 @@ from datetime import datetime
 def seed_transactions():
 
     transactions = Transaction(user_id=1, amount='13.99',
-                               description='Hulu', category_id=1, receipt_url='www.google.com')
+                               description='Hulu', category_id=1, receipt_url='www.google.com', sub_category='Subscriptions')
 
     db.session.add(transactions)
 

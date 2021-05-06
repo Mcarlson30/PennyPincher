@@ -13,6 +13,7 @@ class Transaction(db.Model):
     category_id = db.Column(db.Integer, db.ForeignKey(
         "categories.id"), nullable=False)
     amount = db.Column(db.Float, nullable=False)
+    sub_category = db.Column(db.String, nullable=False)
     receipt_url = db.Column(db.String)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
@@ -30,5 +31,6 @@ class Transaction(db.Model):
             "amount": self.amount,
             "receipt_url": self.receipt_url,
             "created_at": self.created_at,
-            "updated_at": self.updated_at
+            "updated_at": self.updated_at,
+            "sub_category": self.sub_category
         }
