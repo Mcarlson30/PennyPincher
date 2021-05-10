@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import Transaction
+from app.models import db, Transaction, Category
+from app.forms.transaction_form import TransactionForm
 
 
 transaction_routes = Blueprint('transactions', __name__)
@@ -37,3 +38,27 @@ def delete_transaction(id):
     db.session.delete(transaction)
     db.session.commit()
     return redirect('/')
+
+
+@transaction_routes.route('/category')
+@login_required
+def get_categories():
+    categories = Category.query.all()
+    return {'categories': [category.to_dict() for category in categories]}
+
+
+@transaction_routes.route('/', methods=['POST'])
+@login_required
+def post_transaction():
+    form = TransactionForm()
+    newTransaction = Transaction(
+        user_id=current_user.id,
+        amount=form.amount.data,
+        description=form.description.data,
+        category_id=form.category_id.data,
+        sub_category=form.sub_category.data,
+        receipt_url=form.receipt_url.data
+    )
+    print('transaction---------------', newTransaction)
+    db.session.add(newTransaction)
+    db.session.commit()

@@ -1,0 +1,34 @@
+.nav-tabs-contianer{
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #333333;
+}
+
+.nav-tabs{
+    padding: 20px;
+    font-size: 14px;
+    border-top: 1px solid #333333;
+    border-left: 1px solid #333333;
+    border-right: 1px solid #333333;
+    margin-top: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-top-left-radius: 30%;
+    border-top-right-radius: 30%;
+}
+
+.nav-link{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+
+.active{
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    border-bottom: 5px solid green;
+
+}
