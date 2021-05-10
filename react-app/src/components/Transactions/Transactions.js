@@ -27,7 +27,7 @@ function Transaction() {
     return (
         < div className='transactions-container'>
             <div className='inner-div'>
-                {console.log("transactions", allTransactions.transactions)}
+                {/* {console.log("transactions", allTransactions.transactions)} */}
                 <div className='new-transaction'>
                     <NewTransaction categories={categories} />
                 </div>
@@ -54,7 +54,7 @@ function Transaction() {
                                 onMouseOver={() => setTransactionId(transaction.id)}
                                 onClick={handleDeleteTransaction}
                                 className='editBtn'
-                            ><i class="trash alternate icon"></i></button>
+                            ><i class="fas fa-trash-alt"></i></button>
                         </div>
 
                     ))}

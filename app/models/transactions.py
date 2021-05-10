@@ -15,13 +15,13 @@ class Transaction(db.Model):
     amount = db.Column(db.Float, nullable=False)
     sub_category = db.Column(db.String, nullable=False)
     receipt_url = db.Column(db.String)
-    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_at = db.Column(db.Date, default=date.date.utcnow)
+    updated_at = db.Column(db.Date, default=date.date.utcnow)
 
     # db relationships
     user = db.relationship('User', back_populates='user_transactions')
     category = db.relationship(
-        'Category', back_populates='transaction', cascade="all, delete")
+        'Category', back_populates='transaction')
 
     def to_dict(self):
         return {

@@ -40,3 +40,17 @@
 .created-at{
     width: 20%;
 }
+
+.editBtn {
+    border: none;
+    background-color: white;
+    width: 5%;
+}
+
+/* i{
+    width: 100%
+} */
+
+*{
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+}

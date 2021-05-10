@@ -63,7 +63,7 @@ function NewTransaction() {
                     placeholder='Select'
                     onChange={(e) => setCategoryId(e.target.value)}
                 >
-                    {console.log('category', categories.categories)}
+                    {/* {console.log('category', categories.categories)} */}
                     <option value="select">Select Category</option>
                     {categories.categories.map(category => (
                         <option value={category.id} key={category.id}>{category.category}</option>

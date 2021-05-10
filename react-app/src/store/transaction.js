@@ -1,7 +1,8 @@
 // constants
 const SET_TRANSACTIONS = "transactions/SET_TRANSACTIONS";
 const SET_CATEGORIES = "transactions/SET_CATEGORIES";
-const REMOVE_TRANSACTION = "Transactions/REMOVE_TRANSACTION";
+const REMOVE_TRANSACTION = "transactions/REMOVE_TRANSACTION";
+const ADD_TRANSACTION = 'transactions/ADD_TRANSACTION'
 
 const setTransactions = (transactions) => ({
     type: SET_TRANSACTIONS,
@@ -11,6 +12,16 @@ const setTransactions = (transactions) => ({
 const setCategories = (categories) => ({
     type: SET_CATEGORIES,
     payload: categories
+})
+
+const addTransaction = (id) => ({
+    type: ADD_TRANSACTION,
+    payload: id
+})
+
+const removeTransaction = (id) => ({
+    type: REMOVE_TRANSACTION,
+    payload: id
 })
 
 // const removeUser = () => ({
@@ -64,7 +75,8 @@ export const createNewTransaction = (params) => async (dispatch) => {
         body: formData
     });
     console.log("------!")
-    // const data = await response.json();
+    const data = await response.json()
+    dispatch(setTransactions(data))
     return
 
 }
@@ -77,6 +89,7 @@ export const deleteTransaction = (transactionId) => async dispatch => {
     })
 
     const data = await response.json()
+    dispatch(setTransactions(data))
     return
 }
 
@@ -90,9 +103,11 @@ const initialState = { transactions: null, categories: null };
 export default function transactionReducer(state = initialState, action) {
     switch (action.type) {
         case SET_TRANSACTIONS:
-            return { transactions: action.payload };
+            return { ...state, transactions: action.payload };
         case SET_CATEGORIES:
             return { ...state, categories: action.payload }
+        // case ADD_TRANSACTION:
+        //     return {}
         // case REMOVE_USER:
         //     return { user: null };
         default:

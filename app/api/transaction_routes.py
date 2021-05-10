@@ -37,7 +37,9 @@ def delete_transaction(id):
     transaction = Transaction.query.get(id)
     db.session.delete(transaction)
     db.session.commit()
-    return redirect('/transactions')
+    transactions = Transaction.query.filter(
+        Transaction.user_id == current_user.id)
+    return {'transactions': [transaction.to_dict() for transaction in transactions]}
 
 
 @transaction_routes.route('/category')
@@ -62,3 +64,6 @@ def post_transaction():
     print('transaction---------------', newTransaction)
     db.session.add(newTransaction)
     db.session.commit()
+    transactions = Transaction.query.filter(
+        Transaction.user_id == current_user.id)
+    return {'transactions': [transaction.to_dict() for transaction in transactions]}
