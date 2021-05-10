@@ -1,0 +1,112 @@
+.single-bill{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+
+.bills-list{
+    width: 100%;
+    margin-top: 10px;
+}
+
+.bills-container{
+    display: flex;
+    justify-content: center;
+}
+
+.upcoming-bills{
+    font-size: 20px;
+    color: black;
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.inner-div{
+    width: 70%;
+}
+
+.table-headers-bill{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+
+.name-header-bill{
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.category-header-bill{
+    width: 15%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sub-category-header-bill{
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.amount-header-bill{
+    width: 15%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.due-date-header-bill{
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.delete-header-bill{
+    width: 10%;
+    font-weight: bold;
+    text-align: center;
+}
+
+.amount-bill{
+    width: 15%;
+    text-align: center;
+}
+
+.description-bill{
+    width: 20%;
+    text-align: center;
+}
+
+.category-bill{
+    width: 15%;
+    text-align: center;
+}
+
+.sub-category-bill{
+    width: 20%;
+    text-align: center;
+}
+
+.due-date-bill{
+    width: 20%;
+    text-align: center;
+}
+
+.editBtn-bill {
+    border: none;
+    background-color: white;
+    width: 10%;
+    background-image: \f2ed;
+}
+
+i{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}

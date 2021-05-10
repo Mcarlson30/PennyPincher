@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Transaction from './components/Transactions/Transactions'
+import Bills from './components/Bills/Bills'
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -41,6 +42,9 @@ function App() {
         </Route>
         <Route path='/transactions' exact={true}>
           <Transaction />
+        </Route>
+        <Route path='/bills' exact={true}>
+          <Bills />
         </Route>
         <ProtectedRoute path="/users" exact={true} >
           <UsersList />
