@@ -39,51 +39,56 @@ function NewTransaction() {
     }
 
     return (
-        <form className='transactionForm' onSubmit={handleNewTransaction}>
-            <input
-                className='form-input'
-                type='number'
-                value={amount}
-                placeholder='Amount'
-                onChange={(e) => setAmount(e.target.value)}
-            />
-            <input
-                className='form-input'
-                type='text'
-                value={description}
-                placeholder='Description'
-                onChange={(e) => setDescription(e.target.value)}
-            />
-            <select
-                className='form-input'
-                placeholder='Select'
-                onChange={(e) => setCategoryId(e.target.value)}
-            >
-                {console.log('category', categories.categories)}
-                <option value="select">Select Category</option>
-                {categories.categories.map(category => (
-                    <option value={category.id} key={category.id}>{category.category}</option>
-                ))}
-            </select>
-            <select
-                className='form-input'
-                type='number'
-                onChange={(e) => setSubCategoryId(e.target.value)}
-            >
-                <option value='select'>Select SubCategory</option>
-                {categoryId && categories.categories[categoryId - 1].sub_categories.map(category => (
-                    <option value={category.sub_category}>{category.sub_category}</option>
-                ))}
-            </select>
-            <input
-                className='form-input'
-                type='test'
-                value={receiptUrl}
-                placeholder='Receipt Url'
-                onChange={(e) => setReceiptUrl(e.target.value)}
-            />
-            <button className='transactionButton' type='submit'>Add</button>
-        </form>
+        <div className='add-transaction-container'>
+            <div className='add-transaction'>
+                Add A Transaction
+            </div>
+            <form className='transactionForm' onSubmit={handleNewTransaction}>
+                <input
+                    className='form-input-number'
+                    type='number'
+                    value={amount}
+                    placeholder='Amount'
+                    onChange={(e) => setAmount(e.target.value)}
+                />
+                <input
+                    className='form-input'
+                    type='text'
+                    value={description}
+                    placeholder='Description'
+                    onChange={(e) => setDescription(e.target.value)}
+                />
+                <select
+                    className='form-input'
+                    placeholder='Select'
+                    onChange={(e) => setCategoryId(e.target.value)}
+                >
+                    {console.log('category', categories.categories)}
+                    <option value="select">Select Category</option>
+                    {categories.categories.map(category => (
+                        <option value={category.id} key={category.id}>{category.category}</option>
+                    ))}
+                </select>
+                <select
+                    className='form-input'
+                    type='number'
+                    onChange={(e) => setSubCategoryId(e.target.value)}
+                >
+                    <option value='select'>Select SubCategory</option>
+                    {categoryId && categories.categories[categoryId - 1].sub_categories.map(category => (
+                        <option value={category.sub_category}>{category.sub_category}</option>
+                    ))}
+                </select>
+                <input
+                    className='form-input'
+                    type='test'
+                    value={receiptUrl}
+                    placeholder='Receipt Url'
+                    onChange={(e) => setReceiptUrl(e.target.value)}
+                />
+                <button className='transactionButton' type='submit'>Add</button>
+            </form>
+        </div>
     )
 }
 

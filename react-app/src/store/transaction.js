@@ -59,15 +59,25 @@ export const createNewTransaction = (params) => async (dispatch) => {
     formData.append('receipt_url', receiptUrl)
 
     console.log('BEFORE RESPONSE')
-    const response = await fetch('/api/transactions/', {  //not done routes yet
+    const response = await fetch('/api/transactions/', {
         method: "POST",
         body: formData
     });
     console.log("------!")
-    const data = await response.json();
-    dispatch(setTransactions(data))
+    // const data = await response.json();
     return
 
+}
+
+// delete a transaction
+export const deleteTransaction = (transactionId) => async dispatch => {
+    const response = await fetch(`api/transactions/${transactionId}`, {
+        method: "DELETE",
+        transactionId,
+    })
+
+    const data = await response.json()
+    return
 }
 
 

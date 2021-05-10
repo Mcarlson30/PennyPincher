@@ -10,7 +10,7 @@ const NavBar = () => {
         <ul className='nav-list'>
           <div className='home-button'>
             <li>
-              <NavLink to="/" id='home-link' exact={true} activeClassName="active">
+              <NavLink to="/" id='home-link' exact={true}>
                 PennyPincher
           </NavLink>
             </li>

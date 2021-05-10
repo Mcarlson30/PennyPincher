@@ -20,7 +20,8 @@ class Transaction(db.Model):
 
     # db relationships
     user = db.relationship('User', back_populates='user_transactions')
-    category = db.relationship('Category', back_populates='transaction')
+    category = db.relationship(
+        'Category', back_populates='transaction', cascade="all, delete")
 
     def to_dict(self):
         return {

@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, redirect
 from flask_login import login_required, current_user
 from app.models import db, Transaction, Category
 from app.forms.transaction_form import TransactionForm
@@ -37,7 +37,7 @@ def delete_transaction(id):
     transaction = Transaction.query.get(id)
     db.session.delete(transaction)
     db.session.commit()
-    return redirect('/')
+    return redirect('/transactions')
 
 
 @transaction_routes.route('/category')
