@@ -2,15 +2,21 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid black;
+    padding: 10px;
 }
 
-.transaction-list{
+.transactions-list{
     width: 100%;
+    margin-top: 10px;
 }
 
 .transactions-container{
     display: flex;
     justify-content: center;
+    
 }
 
 .inner-div{
@@ -19,38 +25,125 @@
 
 .transaction-number{
     width: 5%;
+    text-align: center;
 }
 
 .amount{
     width: 10%;
+    text-align: center;
 }
 
 .description{
     width: 20%;
+    text-align: center;
 }
 
 .category{
     width: 15%;
+    text-align: center;
 }
 
 .sub-category{
     width: 20%;
+    text-align: center;
 }
 
 .created-at{
     width: 20%;
+    text-align: center;
 }
 
 .editBtn {
     border: none;
     background-color: white;
     width: 5%;
+    background-image: \f2ed;
 }
 
-/* i{
-    width: 100%
-} */
+i{
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.far{
+    width: 100%;
+    height: 100%;
+}
 
 *{
     font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.add-transaction{
+    margin-top: 20px;
+    font-size: 20px;
+    color: black;
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.recent-transactions{ 
+    font-size: 20px;
+    color: black;
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.transactionForm{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.table-headers{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+
+.id{
+    width: 5%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.description-header{
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.category-header{
+    width: 15%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sub-category-header{
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.amount-header{
+    width: 10%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.date-header{
+    width: 20%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.delete-header{
+    width: 5%;
+    font-weight: bold;
 }

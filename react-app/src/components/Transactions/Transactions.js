@@ -31,6 +31,16 @@ function Transaction() {
                 <div className='new-transaction'>
                     <NewTransaction categories={categories} />
                 </div>
+                <div className='recent-transactions'>Recent Transactions</div>
+                <div className='table-headers'>
+                    <div className='id'>ID</div>
+                    <div className='description-header'>Description</div>
+                    <div className='category-header'>Category</div>
+                    <div className='sub-category-header'>Sub Category</div>
+                    <div className='amount-header'>Amount</div>
+                    <div className='date-header'>Date</div>
+                    <div className='delete-header'>Delete</div>
+                </div>
                 <div className='transactions-list'>
                     {Object.values(allTransactions.transactions).map(transaction => (
                         <div className='single-transaction' key={transaction.id}>
@@ -47,14 +57,14 @@ function Transaction() {
                                 ${transaction.amount}
                             </div>
                             <div className='created-at'>
-                                {transaction.created_at}
+                                {transaction.created_at.split(' ', 4).join(' ')}
                             </div>
                             <button
                                 value={transaction.id}
                                 onMouseOver={() => setTransactionId(transaction.id)}
                                 onClick={handleDeleteTransaction}
                                 className='editBtn'
-                            ><i class="fas fa-trash-alt"></i></button>
+                            ><i class="far fa-trash-alt"></i></button>
                         </div>
 
                     ))}

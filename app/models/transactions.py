@@ -1,5 +1,6 @@
 from .db import db
 import datetime
+from datetime import date
 # from werkzeug.security import generate_password_hash, check_password_hash
 # from flask_login import UserMixin
 
@@ -15,8 +16,8 @@ class Transaction(db.Model):
     amount = db.Column(db.Float, nullable=False)
     sub_category = db.Column(db.String, nullable=False)
     receipt_url = db.Column(db.String)
-    created_at = db.Column(db.Date, default=date.date.utcnow)
-    updated_at = db.Column(db.Date, default=date.date.utcnow)
+    created_at = db.Column(db.Date, default=date.today())
+    updated_at = db.Column(db.Date, default=date.today())
 
     # db relationships
     user = db.relationship('User', back_populates='user_transactions')
