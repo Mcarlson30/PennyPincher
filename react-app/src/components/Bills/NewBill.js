@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getBills, createNewBill } from '../../store/bills'
 
 import './Bills.css'
 
@@ -12,7 +13,6 @@ function NewBill() {
     const [description, setDescription] = useState('');
     const [categoryId, setCategoryId] = useState('');
     const [subCategoryId, setSubCategoryId] = useState('');
-    const [receiptUrl, setReceiptUrl] = useState('');
     const [subCategory, setSubCategory] = useState('');
 
 
@@ -21,17 +21,16 @@ function NewBill() {
     // })
 
     // console.log('categories', categories)
-    const handleNewTransaction = async (e) => {
+    const handleNewBill = async (e) => {
         e.preventDefault();
-        const params = { userId, amount, description, categoryId, subCategoryId, receiptUrl }
+        const params = { userId, amount, description, categoryId, subCategoryId }
         console.log(params)
-        dispatch(createNewTransaction(params))
+        dispatch(createNewBill(params))
         setAmount('')
         setDescription('')
-        setReceiptUrl('')
         setSubCategoryId('')
         setCategoryId('')
-        dispatch(getTransactions())
+        dispatch(getBills())
     }
 
     if (!categories) {
@@ -39,27 +38,27 @@ function NewBill() {
     }
 
     return (
-        <div className='add-transaction-container'>
-            <div className='add-transaction'>
-                Add A Transaction
+        <div className='add-bill-container'>
+            <div className='add-tBill'>
+                Add A New Bill
             </div>
-            <form className='transactionForm' onSubmit={handleNewTransaction}>
+            <form className='billForm' onSubmit={handleNewBill}>
                 <input
-                    className='form-input-number'
+                    className='form-input-amount'
                     type='number'
                     value={amount}
                     placeholder='Amount'
                     onChange={(e) => setAmount(e.target.value)}
                 />
                 <input
-                    className='form-input'
+                    className='form-input-description'
                     type='text'
                     value={description}
                     placeholder='Description'
                     onChange={(e) => setDescription(e.target.value)}
                 />
                 <select
-                    className='form-input'
+                    className='form-input-category'
                     placeholder='Select'
                     onChange={(e) => setCategoryId(e.target.value)}
                 >
@@ -70,7 +69,7 @@ function NewBill() {
                     ))}
                 </select>
                 <select
-                    className='form-input'
+                    className='form-input-sub-category'
                     type='number'
                     onChange={(e) => setSubCategoryId(e.target.value)}
                 >
@@ -79,17 +78,10 @@ function NewBill() {
                         <option value={category.sub_category}>{category.sub_category}</option>
                     ))}
                 </select>
-                <input
-                    className='form-input'
-                    type='test'
-                    value={receiptUrl}
-                    placeholder='Receipt Url'
-                    onChange={(e) => setReceiptUrl(e.target.value)}
-                />
-                <button className='transactionButton' type='submit'>Add</button>
+                <button className='billButton' type='submit'>Add</button>
             </form>
         </div>
     )
 }
 
-export default NewTransaction
+export default NewBill

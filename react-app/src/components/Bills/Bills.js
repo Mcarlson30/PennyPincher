@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { getBills, deleteBill } from '../../store/bills'
 import { getTransactions, getCategories } from "../../store/transaction";
+import NewBill from './NewBill'
 import './Bills.css'
 
 function Bills() {
@@ -31,7 +32,7 @@ function Bills() {
             <div className='inner-div'>
                 {console.log("tbills", bills.bills)}
                 <div className='new-bill'>
-                    {/* <NewTransaction categories={categories} /> */}
+                    <NewBill categories={categories} />
                 </div>
                 <div className='upcoming-bills'>Monthly Bills</div>
                 <div className='table-headers-bill'>

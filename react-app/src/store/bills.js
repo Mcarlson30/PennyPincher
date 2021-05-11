@@ -37,6 +37,27 @@ export const deleteBill = (billId) => async dispatch => {
     return
 }
 
+export const createNewBill = (params) => async (dispatch) => {
+    const { userId, amount, description, categoryId, subCategoryId } = params
+    const formData = new FormData()
+    formData.append('user_id', userId)
+    formData.append('amount', amount)
+    formData.append('description', description)
+    formData.append('category_id', categoryId)
+    formData.append('sub_category', subCategoryId)
+
+    console.log('BEFORE RESPONSE')
+    const response = await fetch('/api/bills/', {
+        method: "POST",
+        body: formData
+    });
+    console.log("------!")
+    const data = await response.json()
+    dispatch(setBills(data))
+    return
+
+}
+
 // reducer
 
 const initialState = { bills: null };

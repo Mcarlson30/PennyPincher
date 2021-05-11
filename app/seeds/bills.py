@@ -8,7 +8,7 @@ from datetime import datetime
 def seed_bills():
 
     bills = Bill(user_id=1, amount='13.99',
-                 name='Netflix', category_id=1, due_date=datetime.now())
+                 name='Netflix', category_id=1, sub_category='Subscriptions', due_date=datetime.now())
 
     db.session.add(bills)
 

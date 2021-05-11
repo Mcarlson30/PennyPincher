@@ -12,6 +12,7 @@ class Bill(db.Model):
     name = db.Column(db.String(255), nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey(
         "categories.id"), nullable=False)
+    sub_category = db.Column(db.String, nullable=False)
     amount = db.Column(db.Float, nullable=False)
     due_date = db.Column(db.DateTime, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
@@ -27,6 +28,7 @@ class Bill(db.Model):
             "user_id": self.user_id,
             "name": self.name,
             "category_id": self.category.to_dict(),
+            "sub_category": self.sub_category,
             "amount": self.amount,
             "due_date": self.due_date,
             "created_at": self.created_at,
