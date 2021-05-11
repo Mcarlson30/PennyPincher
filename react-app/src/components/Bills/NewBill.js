@@ -47,13 +47,6 @@ function NewBill() {
                     placeholder='Description'
                     onChange={(e) => setDescription(e.target.value)}
                 />
-                <input
-                    className='form-input-amount'
-                    type='number'
-                    value={amount}
-                    placeholder='Amount'
-                    onChange={(e) => setAmount(e.target.value)}
-                />
                 <select
                     className='form-input-category'
                     placeholder='Select'
@@ -75,6 +68,13 @@ function NewBill() {
                         <option value={category.sub_category}>{category.sub_category}</option>
                     ))}
                 </select>
+                <input
+                    className='form-input-amount'
+                    type='number'
+                    value={amount}
+                    placeholder='Amount'
+                    onChange={(e) => setAmount(e.target.value)}
+                />
                 <input
                     className='form-input-due-date'
                     type='date'

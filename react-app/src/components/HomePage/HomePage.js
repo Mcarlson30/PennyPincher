@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
 import { getTransactions, getCategories } from '../../store/transaction'
 import { getBills } from '../../store/bills'
+import { Pie } from 'react-chartjs-2'
 import './HomePage.css'
 const { Calendar } = require("node-calendar-js");
 
@@ -12,24 +13,23 @@ function HomePage() {
     const bills = useSelector(state => state.bills.bills)
     const [transactionId, setTransactionId] = useState('')
     let current_date = new Date()
+    let chartCategories = {}
+
+    const categoryValues = () => {
+        allTransactions.transactions.map(transaction => (
+            chartCategories[transaction.category.category] = (chartCategories[transaction.category.category] + transaction.amount) || transaction.amount
+        ))
+    }
+
     useEffect(() => {
         dispatch(getTransactions())
         dispatch(getCategories())
         dispatch(getBills())
     }, [dispatch]);
 
-    const calendar = new Calendar({
-        year: 2021,
-        month: 4
-    });
-    calendar.create()
-    calendar.toHTML()
-
-    // console.log('calendar', calendar)
-
+    // compare number of days between a give date and today
     const determineDate = (due_date, current_date, bill_name) => {
         const current = new Date(due_date)
-        console.log('due date', typeof due_date, 'current date', typeof current_date)
         const one_day = 1000 * 60 * 60 * 24
         const Result = Math.round(current.getTime() - current_date.getTime()) / (one_day);
         const result = Result.toFixed(0);
@@ -41,9 +41,8 @@ function HomePage() {
                 <div>{bill_name} due TODAY!</div>
             )
         }
-
-
     }
+
 
     if (!allTransactions) {
         return null;
@@ -64,6 +63,33 @@ function HomePage() {
                             </div>
                         </div>
                     ))}
+                </div>
+            </div>
+            <div className='chart-container'>
+                {categoryValues()}
+                <div className='category-chart'>
+                    {console.log('asdasdas', chartCategories)}
+                    <Pie
+                        data={{
+                            datasets: [{
+                                label: 'Category Spending',
+                                data: Object.values(chartCategories),
+                                backgroundColor: [
+                                    '#DeeDcf',
+                                    '#BFE1B0',
+                                    '#99D492',
+                                    '#74C67A',
+                                    '#56B870',
+                                    '#39A96B',
+                                    '#1D9A6C',
+                                    '#188977',
+                                    '#137177',
+                                    '#0E4D64',
+                                    '#GA2F51'
+                                ],
+                            }],
+                            labels: Object.keys(chartCategories),
+                        }}></Pie>
                 </div>
             </div>
         </div >

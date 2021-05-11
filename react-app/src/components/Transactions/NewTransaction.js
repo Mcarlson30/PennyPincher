@@ -45,13 +45,6 @@ function NewTransaction() {
             </div>
             <form className='transactionForm' onSubmit={handleNewTransaction}>
                 <input
-                    className='form-input-number'
-                    type='number'
-                    value={amount}
-                    placeholder='Amount'
-                    onChange={(e) => setAmount(e.target.value)}
-                />
-                <input
                     className='form-input'
                     type='text'
                     value={description}
@@ -79,6 +72,13 @@ function NewTransaction() {
                         <option value={category.sub_category}>{category.sub_category}</option>
                     ))}
                 </select>
+                <input
+                    className='form-input-number'
+                    type='number'
+                    value={amount}
+                    placeholder='Amount'
+                    onChange={(e) => setAmount(e.target.value)}
+                />
                 <input
                     className='form-input'
                     type='test'
