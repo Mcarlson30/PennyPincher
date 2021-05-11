@@ -44,18 +44,18 @@ function NewBill() {
             </div>
             <form className='billForm' onSubmit={handleNewBill}>
                 <input
-                    className='form-input-amount'
-                    type='number'
-                    value={amount}
-                    placeholder='Amount'
-                    onChange={(e) => setAmount(e.target.value)}
-                />
-                <input
                     className='form-input-description'
                     type='text'
                     value={description}
                     placeholder='Description'
                     onChange={(e) => setDescription(e.target.value)}
+                />
+                <input
+                    className='form-input-amount'
+                    type='number'
+                    value={amount}
+                    placeholder='Amount'
+                    onChange={(e) => setAmount(e.target.value)}
                 />
                 <select
                     className='form-input-category'

@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import Bill
+from app.models import db, Bill
+from app.forms.bills_form import BillForm
 
 bills_routes = Blueprint('bills', __name__)
 
@@ -36,3 +37,22 @@ def delete_bill(id):
     db.session.delete(bill)
     db.session.commit()
     return redirect('/')
+
+
+@bills_routes.route('/', methods=['POST'])
+@login_required
+def post_bill():
+    form = BillForm()
+    newBill = Bill(
+        user_id=current_user.id,
+        amount=form.amount.data,
+        name=form.description.data,
+        category_id=form.category_id.data,
+        sub_category=form.sub_category.data,
+    )
+    print('Bill---------------', newBill)
+    db.session.add(newBill)
+    db.session.commit()
+    bills = Bill.query.filter(
+        Bill.user_id == current_user.id)
+    return {'bills': [bill.to_dict() for bill in bills]}
