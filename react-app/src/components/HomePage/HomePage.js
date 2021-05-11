@@ -14,11 +14,17 @@ function HomePage() {
     const [transactionId, setTransactionId] = useState('')
     let current_date = new Date()
     let chartCategories = {}
+    let chartSubCategories = {}
 
     const categoryValues = () => {
         allTransactions.transactions.map(transaction => (
             chartCategories[transaction.category.category] = (chartCategories[transaction.category.category] + transaction.amount) || transaction.amount
         ))
+
+        allTransactions.transactions.map(transaction => (
+            chartSubCategories[transaction.sub_category] = (chartSubCategories[transaction.sub_category] + transaction.amount) || transaction.amount
+        ))
+
     }
 
     useEffect(() => {
@@ -34,7 +40,7 @@ function HomePage() {
         const Result = Math.round(current.getTime() - current_date.getTime()) / (one_day);
         const result = Result.toFixed(0);
         if (result > 0 && result <= 7) {
-            return (<div>{bill_name} due in {result} days</div>)
+            return (<div>{bill_name} due in {result} day(s)</div>)
         }
         if (result === 0) {
             return (
@@ -66,8 +72,10 @@ function HomePage() {
                 </div>
             </div>
             <div className='chart-container'>
+                {console.log(allTransactions)}
                 {categoryValues()}
                 <div className='category-chart'>
+                    <div className='category-spending'>Category Spending</div>
                     {console.log('asdasdas', chartCategories)}
                     <Pie
                         data={{
@@ -89,6 +97,30 @@ function HomePage() {
                                 ],
                             }],
                             labels: Object.keys(chartCategories),
+                        }}></Pie>
+                </div>
+                <div className='sub-category-chart'>
+                    <div className='sub-category-spending'>SubCategory Spending</div>
+                    <Pie
+                        data={{
+                            datasets: [{
+                                label: 'Category Spending',
+                                data: Object.values(chartSubCategories),
+                                backgroundColor: [
+                                    '#GA2F51',
+                                    '#DeeDcf',
+                                    '#BFE1B0',
+                                    '#99D492',
+                                    '#74C67A',
+                                    '#56B870',
+                                    '#39A96B',
+                                    '#1D9A6C',
+                                    '#188977',
+                                    '#137177',
+                                    '#0E4D64',
+                                ],
+                            }],
+                            labels: Object.keys(chartSubCategories),
                         }}></Pie>
                 </div>
             </div>

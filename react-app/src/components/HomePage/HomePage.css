@@ -2,6 +2,13 @@
     display: flex;
 }
 
+.chart-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+}
+
 .calendar-container{
     margin-top: 5%;
     width: 20%;
@@ -27,6 +34,31 @@
 }
 
 .category-chart{
-    width: 400px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
     height: 400px;
+}
+
+.sub-category-chart{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 400px;
+}
+
+.category-spending{
+    margin-bottom: 20px;
+}
+
+.sub-category-spending{
+    margin-bottom: 20px;
+}
+
+.bill-due{
+    padding: 5px;
 }
