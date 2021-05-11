@@ -1,0 +1,23 @@
+.calendar-container{
+    margin-top: 5%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.calendar{
+    border: 1px solid black;
+}
+
+.day{
+    text-align: center;
+}
+
+.bills-header{
+    margin-top: 15px;
+    text-decoration: underline;
+    font-size: 20px;
+    color: black;
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+}

@@ -36,7 +36,9 @@ def delete_bill(id):
     bill = Bill.query.get(id)
     db.session.delete(bill)
     db.session.commit()
-    return redirect('/')
+    bills = Bill.query.filter(
+        Bill.user_id == current_user.id)
+    return {'bills': [bill.to_dict() for bill in bills]}
 
 
 @bills_routes.route('/', methods=['POST'])
@@ -49,6 +51,7 @@ def post_bill():
         name=form.description.data,
         category_id=form.category_id.data,
         sub_category=form.sub_category.data,
+        due_date=form.due_date.data
     )
     print('Bill---------------', newBill)
     db.session.add(newBill)

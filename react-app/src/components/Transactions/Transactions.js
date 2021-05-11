@@ -58,6 +58,7 @@ function Transaction() {
                             </div>
                             <div className='created-at'>
                                 {transaction.created_at.split(' ', 4).join(' ')}
+                                {/* {transaction.created_at} */}
                             </div>
                             <button
                                 value={transaction.id}

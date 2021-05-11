@@ -10,6 +10,7 @@ import UsersList from "./components/UsersList";
 import User from "./components/User";
 import Transaction from './components/Transactions/Transactions'
 import Bills from './components/Bills/Bills'
+import HomePage from './components/HomePage/HomePage'
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
 
@@ -53,7 +54,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
-          <h1>My Home Page</h1>
+          <HomePage />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>

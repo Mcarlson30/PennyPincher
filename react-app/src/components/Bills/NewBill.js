@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBills, createNewBill } from '../../store/bills'
 
@@ -13,23 +13,20 @@ function NewBill() {
     const [description, setDescription] = useState('');
     const [categoryId, setCategoryId] = useState('');
     const [subCategoryId, setSubCategoryId] = useState('');
-    const [subCategory, setSubCategory] = useState('');
+    const [dueDate, setDueDate] = useState('');
 
-
-    // useEffect(() => {
-    //     setSubCategoryId(categories.categories)
-    // })
 
     // console.log('categories', categories)
     const handleNewBill = async (e) => {
         e.preventDefault();
-        const params = { userId, amount, description, categoryId, subCategoryId }
+        const params = { userId, amount, description, categoryId, subCategoryId, dueDate }
         console.log(params)
         dispatch(createNewBill(params))
         setAmount('')
         setDescription('')
         setSubCategoryId('')
         setCategoryId('')
+        setDueDate('')
         dispatch(getBills())
     }
 
@@ -78,6 +75,13 @@ function NewBill() {
                         <option value={category.sub_category}>{category.sub_category}</option>
                     ))}
                 </select>
+                <input
+                    className='form-input-due-date'
+                    type='date'
+                    value={dueDate}
+                    placeholder='Due Date'
+                    onChange={(e) => setDueDate(e.target.value)}
+                />
                 <button className='billButton' type='submit'>Add</button>
             </form>
         </div>
