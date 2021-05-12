@@ -7,7 +7,6 @@ function NewTransaction() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const categories = useSelector(state => state.transactions.categories)
-    const userId = sessionUser.id
     const [amount, setAmount] = useState('');
     const [description, setDescription] = useState('');
     const [categoryId, setCategoryId] = useState('');
@@ -23,7 +22,7 @@ function NewTransaction() {
     // console.log('categories', categories)
     const handleNewTransaction = async (e) => {
         e.preventDefault();
-        const params = { userId, amount, description, categoryId, subCategoryId, receiptUrl }
+        const params = { amount, description, categoryId, subCategoryId, receiptUrl }
         console.log(params)
         dispatch(createNewTransaction(params))
         setAmount('')

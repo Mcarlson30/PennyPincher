@@ -42,9 +42,11 @@ function App() {
           <SignUpForm />
         </Route>
         <Route path='/transactions' exact={true}>
+          {/* <NavTabs /> */}
           <Transaction />
         </Route>
         <Route path='/bills' exact={true}>
+          {/* <NavTabs /> */}
           <Bills />
         </Route>
         <ProtectedRoute path="/users" exact={true} >
@@ -54,6 +56,7 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path="/" exact={true}>
+          {/* <NavTabs /> */}
           <HomePage />
         </ProtectedRoute>
       </Switch>

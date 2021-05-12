@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { getBills } from "../../store/bills";
 import { login } from "../../store/session";
+import { getTransactions } from "../../store/transaction";
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -12,6 +14,8 @@ const LoginForm = () => {
 
   const onLogin = async (e) => {
     e.preventDefault();
+    dispatch(getTransactions())
+    dispatch(getBills())
     const data = await dispatch(login(email, password));
     if (data.errors) {
       setErrors(data.errors);

@@ -60,9 +60,8 @@ export const getCategories = () => async (dispatch) => {
 }
 
 export const createNewTransaction = (params) => async (dispatch) => {
-    const { userId, amount, description, categoryId, subCategoryId, receiptUrl } = params
+    const { amount, description, categoryId, subCategoryId, receiptUrl } = params
     const formData = new FormData()
-    formData.append('user_id', userId)
     formData.append('amount', amount)
     formData.append('description', description)
     formData.append('category_id', categoryId)

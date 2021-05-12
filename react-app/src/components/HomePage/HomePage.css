@@ -38,7 +38,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 40%;
     height: 400px;
 }
 
@@ -47,18 +47,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 50%;
+    width: 40%;
     height: 400px;
 }
 
 .category-spending{
     margin-bottom: 20px;
+    font-size: 20px;
+    color: black;
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .sub-category-spending{
     margin-bottom: 20px;
+    font-size: 20px;
+    color: black;
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .bill-due{
     padding: 5px;
+    display: flex;
+    justify-content: center;
 }

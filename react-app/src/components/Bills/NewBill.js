@@ -8,7 +8,6 @@ function NewBill() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user);
     const categories = useSelector(state => state.transactions.categories)
-    const userId = sessionUser.id
     const [amount, setAmount] = useState('');
     const [description, setDescription] = useState('');
     const [categoryId, setCategoryId] = useState('');
@@ -19,7 +18,7 @@ function NewBill() {
     // console.log('categories', categories)
     const handleNewBill = async (e) => {
         e.preventDefault();
-        const params = { userId, amount, description, categoryId, subCategoryId, dueDate }
+        const params = { amount, description, categoryId, subCategoryId, dueDate }
         console.log(params)
         dispatch(createNewBill(params))
         setAmount('')
