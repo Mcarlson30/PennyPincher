@@ -13,6 +13,8 @@ import Bills from './components/Bills/Bills'
 import HomePage from './components/HomePage/HomePage'
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
+import { getTransactions } from './store/transaction';
+import { getBills } from './store/bills';
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
@@ -22,6 +24,8 @@ function App() {
   useEffect(() => {
     (async () => {
       await dispatch(authenticate())
+      await dispatch(getTransactions())
+      await dispatch(getBills())
       setLoaded(true);
     })();
   }, [dispatch]);

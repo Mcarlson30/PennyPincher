@@ -17,9 +17,9 @@ function HomePage() {
     let chartSubCategories = {}
 
     useEffect(() => {
+        dispatch(getBills())
         dispatch(getTransactions())
         // dispatch(getCategories())
-        dispatch(getBills())
     }, [dispatch]);
 
     const categoryValues = () => {
@@ -32,7 +32,6 @@ function HomePage() {
         ))
 
     }
-
 
     // compare number of days between a give date and today
     const determineDate = (due_date, current_date, bill_name) => {
@@ -67,16 +66,16 @@ function HomePage() {
                         <div className='single-bill-due' key={bill.id}>
                             <div className='bill-due'>
                                 {determineDate(bill.due_date, current_date, bill.name)}
-                                {console.log(allTransactions)}
-                                {categoryValues()}
+
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
             <div className='chart-container'>
+                {console.log(allTransactions)}
+                {categoryValues()}
                 <div className='category-chart'>
-
                     <div className='category-spending'>Category Spending</div>
                     {console.log('asdasdas', chartCategories)}
                     <Pie
