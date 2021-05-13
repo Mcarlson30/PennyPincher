@@ -15,7 +15,7 @@ const NavBar = () => {
           </NavLink>
             </li>
           </div>
-          {/* <li>
+          <li>
             <NavLink to="/login" exact={true} activeClassName="active">
               Login
           </NavLink>
@@ -25,7 +25,7 @@ const NavBar = () => {
               Sign Up
           </NavLink>
           </li>
-          <li>
+          {/* <li>
             <NavLink to="/users" exact={true} activeClassName="active">
               Users
           </NavLink>

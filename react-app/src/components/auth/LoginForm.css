@@ -1,0 +1,104 @@
+*{
+    font-size: 20px;
+    color: #333333;
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.form-div{
+    width: 40%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid #333333;
+    padding: 15px;
+    background-color: white;
+}
+
+.login-form{
+    width: 90%;
+    height: 90%;
+}
+
+.field{
+    width: 100%;
+    padding: 10px;
+}
+
+.app-header{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.title-app{
+    width: auto;
+    font-size: 24px;
+    font-weight: bold;
+    border-bottom: 5px solid green;
+}
+
+input{
+    width: 90%;
+}
+
+.login-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../../images/background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.submit-button-div{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.demo-button-div{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.submit-button{
+    width: 50%;
+    color: white;
+    border: none;
+    background-color: #333333;
+    cursor: pointer;
+}
+
+.demo-button{
+    width: 50%;
+    color: white;
+    border: none;
+    background-color: #333333;
+    cursor: pointer;
+}
+
+.signup-link-div{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    color: white;
+}
+
+/* .go-to-signup{
+    color: white;
+} */
+
+span{
+    font-weight: bold;
+    color: green;
+    cursor: pointer;
+}
