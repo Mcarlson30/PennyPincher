@@ -9,7 +9,7 @@ transaction_routes = Blueprint('transactions', __name__)
 
 # Route for getting all user transactions
 @transaction_routes.route("/")
-# @login_required
+@login_required
 def get_transactions():
     transactions = Transaction.query.filter(
         Transaction.user_id == current_user.id)
@@ -43,7 +43,7 @@ def delete_transaction(id):
 
 
 @transaction_routes.route('/category')
-# @login_required
+@login_required
 def get_categories():
     categories = Category.query.all()
     return {'categories': [category.to_dict() for category in categories]}

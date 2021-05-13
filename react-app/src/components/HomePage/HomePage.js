@@ -11,7 +11,7 @@ function HomePage() {
     const allTransactions = useSelector(state => state.transactions.transactions)
     const categories = useSelector(state => state.transactions.categories)
     const bills = useSelector(state => state.bills.bills)
-    const [transactionId, setTransactionId] = useState('')
+    const [transactions, setTransactions] = useState(null)
     let current_date = new Date()
     let chartCategories = {}
     let chartSubCategories = {}
@@ -21,6 +21,10 @@ function HomePage() {
         dispatch(getTransactions())
         // dispatch(getCategories())
     }, [dispatch]);
+
+    useEffect(() => {
+        setTransactions(allTransactions)
+    }, [allTransactions])
 
     const categoryValues = () => {
         allTransactions.transactions.map(transaction => (
@@ -62,7 +66,7 @@ function HomePage() {
                 </div>
                 <div className='bills-header'>Upcoming Bills</div>
                 <div className='weekly-bills'>
-                    {Object.values(bills.bills).map(bill => (
+                    {!bills.errors && Object.values(bills.bills).map(bill => (
                         <div className='single-bill-due' key={bill.id}>
                             <div className='bill-due'>
                                 {determineDate(bill.due_date, current_date, bill.name)}
@@ -74,7 +78,7 @@ function HomePage() {
             </div>
             <div className='chart-container'>
                 {console.log(allTransactions)}
-                {categoryValues()}
+                {transactions && categoryValues()}
                 <div className='category-chart'>
                     <div className='category-spending'>Category Spending</div>
                     {console.log('asdasdas', chartCategories)}

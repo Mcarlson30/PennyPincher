@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -20,12 +20,16 @@ function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch()
   const [loaded, setLoaded] = useState(false);
+  const sessionUser = useSelector(state => state.session.user)
 
   useEffect(() => {
     (async () => {
       await dispatch(authenticate())
-      await dispatch(getTransactions())
-      await dispatch(getBills())
+      // if (sessionUser) {
+      //   await dispatch(getTransactions())
+      //   await dispatch(getBills())
+
+      // }
       setLoaded(true);
     })();
   }, [dispatch]);

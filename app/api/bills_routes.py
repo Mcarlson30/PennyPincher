@@ -8,7 +8,7 @@ bills_routes = Blueprint('bills', __name__)
 
 # Route for getting all users bills
 @bills_routes.route("/")
-# @login_required
+@login_required
 def get_bills():
     bills = Bill.query.filter(
         Bill.user_id == current_user.id)
