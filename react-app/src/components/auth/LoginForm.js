@@ -24,6 +24,7 @@ const LoginForm = () => {
       setErrors(data.errors);
     }
   };
+
   const demoLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login('demo@aa.io', 'password'));

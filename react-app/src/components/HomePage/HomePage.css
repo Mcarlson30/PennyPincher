@@ -6,19 +6,28 @@
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 80%;
+    height: 100%;
 }
 
 .calendar-container{
-    margin-top: 5%;
+    margin-top: 2%;
     width: 20%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: 20px;
 }
 
 .calendar{
+    margin-top: 20%;
+    width: 100%;
     border: 1px solid black;
+}
+
+.table{
+    width: 80%;
 }
 
 .day{
@@ -34,32 +43,38 @@
 }
 
 .category-chart{
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
-    height: 400px;
+    width: 50%;
+    height: auto;
+
+}
+
+.all-chart-container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .sub-category-chart{
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 40%;
-    height: 400px;
+    width: 50%;
+    height: auto;
 }
 
 .category-spending{
-    margin-bottom: 20px;
+    margin-bottom: -20px;
     font-size: 20px;
     color: black;
     font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .sub-category-spending{
-    margin-bottom: 20px;
+    margin-bottom: -20px;
     font-size: 20px;
     color: black;
     font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -69,4 +84,38 @@
     padding: 5px;
     display: flex;
     justify-content: center;
+}
+
+.input-button{
+    display: flex;
+    justify-content: center;
+}
+
+.income-title{
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: black;
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.total-spending{
+    margin-bottom: -20px;
+    font-size: 20px;
+    color: black;
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.total-spending-chart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: auto;
+}
+
+.total-spending-container{
+    display: flex;
+    width: 80%;
+    height: 100%;
 }

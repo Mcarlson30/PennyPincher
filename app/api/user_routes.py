@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import User
+from flask_login import login_required, current_user
+from app.models import User, db
+from app.forms.user_form import UserForm
 
 user_routes = Blueprint('users', __name__)
 
@@ -17,3 +18,15 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+# Route for patching a users income
+@user_routes.route('/', methods=['PATCH'])
+@login_required
+def patch_user():
+    form = UserForm()  # Maybe another form!!!
+    edited_user = User.query.get(current_user.id)
+    print('inside user route-----------', edited_user)
+    edited_user.income = form.income.data
+    db.session.commit()
+    return edited_user.to_dict()

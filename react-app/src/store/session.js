@@ -26,7 +26,23 @@ export const authenticate = () => async (dispatch) => {
         return;
     }
     dispatch(setUser(data))
-    
+
+}
+
+export const updateUser = (income) => async (dispatch) => {
+    const formData = new FormData()
+    formData.append('income', income)
+    const response = await fetch('/api/users/', {
+        method: 'PATCH',
+        body: formData
+    });
+    console.log('inside update user thunk', income)
+    const data = await response.json();
+    if (data.errors) {
+        return data;
+    }
+    dispatch(setUser(data));
+    return {};
 }
 
 export const login = (email, password) => async (dispatch) => {
@@ -59,7 +75,7 @@ export const logout = () => async (dispatch) => {
 };
 
 
-export const signUp = (username, email, password) => async (dispatch)=> {
+export const signUp = (username, email, password) => async (dispatch) => {
     const response = await fetch("/api/auth/signup", {
         method: "POST",
         headers: {
