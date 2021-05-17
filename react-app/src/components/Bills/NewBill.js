@@ -6,7 +6,7 @@ import './Bills.css'
 
 function NewBill() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     const categories = useSelector(state => state.transactions.categories)
     const [amount, setAmount] = useState('');
     const [description, setDescription] = useState('');

@@ -1,8 +1,8 @@
 // constants
 const SET_TRANSACTIONS = "transactions/SET_TRANSACTIONS";
 const SET_CATEGORIES = "transactions/SET_CATEGORIES";
-const REMOVE_TRANSACTION = "transactions/REMOVE_TRANSACTION";
-const ADD_TRANSACTION = 'transactions/ADD_TRANSACTION'
+// const REMOVE_TRANSACTION = "transactions/REMOVE_TRANSACTION";
+// const ADD_TRANSACTION = 'transactions/ADD_TRANSACTION'
 
 const setTransactions = (transactions) => ({
     type: SET_TRANSACTIONS,
@@ -14,15 +14,15 @@ const setCategories = (categories) => ({
     payload: categories
 })
 
-const addTransaction = (id) => ({
-    type: ADD_TRANSACTION,
-    payload: id
-})
+// const addTransaction = (id) => ({
+//     type: ADD_TRANSACTION,
+//     payload: id
+// })
 
-const removeTransaction = (id) => ({
-    type: REMOVE_TRANSACTION,
-    payload: id
-})
+// const removeTransaction = (id) => ({
+//     type: REMOVE_TRANSACTION,
+//     payload: id
+// })
 
 // const removeUser = () => ({
 //     type: REMOVE_USER

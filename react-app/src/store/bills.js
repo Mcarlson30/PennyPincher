@@ -1,7 +1,7 @@
 // constants
 
 const SET_BILLS = 'bills/SET_BILLS';
-const REMOVE_BILLS = 'bills/REMOVE_BILLS';
+// const REMOVE_BILLS = 'bills/REMOVE_BILLS';
 
 
 const setBills = (bills) => ({
@@ -9,10 +9,10 @@ const setBills = (bills) => ({
     payload: bills
 })
 
-const removeBill = (id) => ({
-    type: REMOVE_BILLS,
-    payload: id
-})
+// const removeBill = (id) => ({
+//     type: REMOVE_BILLS,
+//     payload: id
+// })
 
 // thunks
 export const getBills = () => async (dispatch) => {

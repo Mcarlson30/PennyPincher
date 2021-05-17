@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
@@ -13,14 +13,13 @@ import Bills from './components/Bills/Bills'
 import HomePage from './components/HomePage/HomePage'
 // import { authenticate } from "./services/auth";
 import { authenticate } from "./store/session";
-import { getTransactions } from './store/transaction';
-import { getBills } from './store/bills';
+
 
 function App() {
   // const [authenticated, setAuthenticated] = useState(false);
   const dispatch = useDispatch()
   const [loaded, setLoaded] = useState(false);
-  const sessionUser = useSelector(state => state.session.user)
+  // const sessionUser = useSelector(state => state.session.user)
 
   useEffect(() => {
     (async () => {

@@ -7,7 +7,7 @@ import './Bills.css'
 
 function Bills() {
     const dispatch = useDispatch();
-    const allTransactions = useSelector(state => state.transactions.transactions)
+    // const allTransactions = useSelector(state => state.transactions.transactions)
     const categories = useSelector(state => state.transactions.categories)
     const bills = useSelector(state => state.bills.bills)
     const [billId, setBillId] = useState('')

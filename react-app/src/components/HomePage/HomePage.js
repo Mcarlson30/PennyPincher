@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux'
-import { getTransactions, getCategories } from '../../store/transaction'
+import { getTransactions } from '../../store/transaction'
 import { getBills } from '../../store/bills'
 import { Pie } from 'react-chartjs-2'
 import './HomePage.css'
-import { authenticate, updateUser } from "../../store/session";
-const { Calendar } = require("node-calendar-js");
+import { updateUser } from "../../store/session";
+// const { Calendar } = require("node-calendar-js");
+import { Modal } from '../context/Modal'
 
 function HomePage() {
     const dispatch = useDispatch();
     const sessionUser = useSelector(state => state.session.user)
     const allTransactions = useSelector(state => state.transactions.transactions)
-    const categories = useSelector(state => state.transactions.categories)
     const bills = useSelector(state => state.bills.bills)
     const [transactions, setTransactions] = useState(null)
     const [income, setIncome] = useState('')
+    const [pieClick, setPieClick] = useState('')
+    const [subPieClick, setSubPieClick] = useState('')
+    const [showModal, setShowModal] = useState(false);
     let current_date = new Date()
     let chartCategories = {}
     let chartSubCategories = {}
     let transactionTotal = 0
-    // Pie.defaults.global.legend.display = false;
+    let modalTransactions
+
 
     useEffect(() => {
         dispatch(getBills())
         dispatch(getTransactions())
-        // dispatch(getCategories())
     }, [dispatch]);
 
     useEffect(() => {
@@ -43,7 +46,16 @@ function HomePage() {
         allTransactions.transactions.map(transaction => (
             transactionTotal = transactionTotal + transaction.amount
         ))
-        console.log(transactionTotal)
+
+        if (pieClick) {
+            modalTransactions = allTransactions.transactions.filter(transaction =>
+                transaction.category.category === pieClick)
+        }
+
+        if (subPieClick) {
+            modalTransactions = allTransactions.transactions.filter(transaction =>
+                transaction.sub_category === subPieClick)
+        }
 
     }
 
@@ -56,7 +68,7 @@ function HomePage() {
         if (result > 0 && result <= 7) {
             return (<div>{bill_name} due in {result} day(s)</div>)
         }
-        if (result === 0) {
+        if (result >= 0 && result < 1) {
             return (
                 <div>{bill_name} due TODAY!</div>
             )
@@ -73,7 +85,15 @@ function HomePage() {
         setIncome('')
     }
 
+    const handleClick = () => {
+        setShowModal(true)
+    }
 
+    const closeModal = () => {
+        setShowModal(false)
+        setPieClick('')
+        setSubPieClick('')
+    }
 
 
     if (!allTransactions && !bills) {
@@ -118,23 +138,10 @@ function HomePage() {
             </div>
             <div className='all-chart-container'>
                 <div className='chart-container'>
-                    {/* {console.log(allTransactions)} */}
                     {transactions && categoryValues()}
                     <div className='category-chart'>
                         <div className='category-spending'>Category Spending</div>
-                        {/* {console.log('asdasdas', chartCategories)} */}
                         <Pie
-                            options={{
-                                plugins: {
-                                    legend: {
-                                        // display: false
-                                        position: 'right'
-                                        // maxHeight: 100,
-                                        // maxWdith: 400,
-                                        // position: 'bottom'
-                                    }
-                                }
-                            }}
                             data={{
                                 datasets: [{
                                     label: 'Category Spending',
@@ -158,7 +165,28 @@ function HomePage() {
                                     hoverOffset: 4
                                 }],
                                 labels: Object.keys(chartCategories),
-                            }}></Pie>
+                            }}
+                            options={{
+                                plugins: {
+                                    legend: {
+                                        position: 'right',
+                                        onClick: function (event, ele) {
+                                            setPieClick(ele.text)
+                                            handleClick()
+                                            // console.log('pie', pieClick)
+                                        }
+                                    },
+
+                                },
+                                // onHover: function (e) {
+                                //     console.log(e)
+                                // }
+                                // onClick: function (event, ele) {
+                                //     // let value = getElementAtEvent(event)
+                                //     // console.log(value)
+                                // }
+                            }}
+                        ></Pie>
                     </div>
                     <div className='sub-category-chart'>
                         <div className='sub-category-spending'>SubCategory Spending</div>
@@ -166,10 +194,12 @@ function HomePage() {
                             options={{
                                 plugins: {
                                     legend: {
-                                        // display: false
-                                        // maxHeight: 100,
-                                        // maxWdith: 400,
-                                        position: 'right'
+                                        position: 'right',
+                                        onClick: function (event, ele) {
+                                            setSubPieClick(ele.text)
+                                            handleClick()
+                                            // console.log('pie', pieClick)
+                                        }
                                     }
                                 }
                             }}
@@ -234,6 +264,53 @@ function HomePage() {
                         ></Pie>
                     </div>
                 </div>
+                {showModal && (
+                    <Modal onClose={closeModal}>
+                        <div className='modal-transaction-div'>
+                            <div className='recent-transactions'>Transactions</div>
+                            <div className='table-headers'>
+                                <div className='id'>ID</div>
+                                <div className='description-header'>Description</div>
+                                <div className='category-header'>Category</div>
+                                <div className='sub-category-header'>Sub Category</div>
+                                <div className='amount-header'>Amount</div>
+                                <div className='date-header'>Date</div>
+                            </div>
+                            <div className='transaction-modal'>
+                                <div className='transactions-list'>
+                                    {console.log('modal', modalTransactions)}
+                                    {Object.values(modalTransactions).map(transaction => (
+                                        <div className='single-transaction' key={transaction.id}>
+                                            <div className='transaction-number'>{transaction.id}</div>
+                                            <div className='description'>
+                                                {transaction.description}</div>
+                                            <div className='category'>
+                                                {transaction.category.category}
+                                            </div>
+                                            <div className='sub-category'>
+                                                {transaction.sub_category}
+                                            </div>
+                                            <div className='amount'>
+                                                ${transaction.amount}
+                                            </div>
+                                            <div className='created-at'>
+                                                {transaction.created_at.split(' ', 4).join(' ')}
+                                                {/* {transaction.created_at} */}
+                                            </div>
+                                            {/* <button
+                                            value={transaction.id}
+                                            onMouseOver={() => setTransactionId(transaction.id)}
+                                            onClick={handleDeleteTransaction}
+                                            className='editBtn'
+                                        ><i class="far fa-trash-alt"></i></button> */}
+                                        </div>
+
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </Modal>
+                )}
             </div>
 
         </div >

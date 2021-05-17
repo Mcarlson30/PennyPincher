@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransactions, createNewTransaction } from '../../store/transaction';
 import './Transactions.css'
 
 function NewTransaction() {
     const dispatch = useDispatch();
-    const sessionUser = useSelector(state => state.session.user);
+    // const sessionUser = useSelector(state => state.session.user);
     const categories = useSelector(state => state.transactions.categories)
     const [amount, setAmount] = useState('');
     const [description, setDescription] = useState('');
     const [categoryId, setCategoryId] = useState('');
     const [subCategoryId, setSubCategoryId] = useState('');
     const [receiptUrl, setReceiptUrl] = useState('');
-    const [subCategory, setSubCategory] = useState('');
+    // const [subCategory, setSubCategory] = useState('');
 
 
     // useEffect(() => {
