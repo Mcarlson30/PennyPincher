@@ -12,7 +12,7 @@ transaction_routes = Blueprint('transactions', __name__)
 @login_required
 def get_transactions():
     transactions = Transaction.query.filter(
-        Transaction.user_id == current_user.id)
+        Transaction.user_id == current_user.id).order_by(Transaction.created_at.desc())
     return {'transactions': [transaction.to_dict() for transaction in transactions]}
 
 
@@ -47,6 +47,8 @@ def delete_transaction(id):
 def get_categories():
     categories = Category.query.all()
     return {'categories': [category.to_dict() for category in categories]}
+
+# Route for posting a transaction
 
 
 @transaction_routes.route('/', methods=['POST'])
