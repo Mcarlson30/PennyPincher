@@ -35,7 +35,7 @@ function NewBill() {
 
     return (
         <div className='add-bill-container'>
-            <div className='add-tBill'>
+            <div className='add-bill'>
                 Add A New Bill
             </div>
             <form className='billForm' onSubmit={handleNewBill}>

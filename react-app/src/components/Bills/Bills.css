@@ -110,3 +110,18 @@ i{
     height: 100%;
     cursor: pointer;
 }
+
+.add-bill{
+    margin-top: 20px;
+    font-size: 20px;
+    color: black;
+    font-family: "AvenirNext-Regular-Mint","Helvetica Neue",Helvetica,Arial,sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+.billForm{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
