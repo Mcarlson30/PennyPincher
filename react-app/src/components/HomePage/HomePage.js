@@ -5,8 +5,8 @@ import { getBills } from '../../store/bills'
 import { Pie } from 'react-chartjs-2'
 import './HomePage.css'
 import { updateUser } from "../../store/session";
-// const { Calendar } = require("node-calendar-js");
 import { Modal } from '../context/Modal'
+const { Calendar } = require("node-calendar-js");
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -23,6 +23,13 @@ function HomePage() {
     let chartSubCategories = {}
     let transactionTotal = 0
     let modalTransactions
+
+    const calendar = new Calendar({
+        year: 2021,
+        month: 5
+    });
+
+    const calendarHTML = calendar.toHTML()
 
 
     useEffect(() => {
@@ -122,6 +129,7 @@ function HomePage() {
                     </form>
                 </div>
                 <div className='calendar'>
+                    calendarHTML
                     {/* <table width="90%" className='calendar-table'><caption>May 2021</caption><thead><tr><th class="sunday">Sun</th><th class="monday">Mon</th><th class="tuesday">Tues</th><th class="wednesday">Wed</th><th class="thursday">Thur</th><th class="friday">Fri</th><th class="saturday">Sat</th></tr></thead><tbody><tr><td class="day"></td><td class="day"></td><td class="day"></td><td class="day"></td><td class="day"></td><td class="day"></td><td class="day">1</td></tr><tr><td class="day">2</td><td class="day">3</td><td class="day">4</td><td class="day">5</td><td class="day">6</td><td class="day">7</td><td class="day">8</td></tr><tr><td class="day">9</td><td class="day">10</td><td class="day">11</td><td class="day">12</td><td class="day">13</td><td class="day">14</td><td class="day">15</td></tr><tr><td class="day">16</td><td class="day">17</td><td class="day">18</td><td class="day">19</td><td class="day">20</td><td class="day">21</td><td class="day">22</td></tr><tr><td class="day">23</td><td class="day">24</td><td class="day">25</td><td class="day">26</td><td class="day">27</td><td class="day">28</td><td class="day">29</td></tr><tr><td class="day">30</td><td class="day">31</td><td class="day"></td><td class="day"></td><td class="day"></td><td class="day"></td><td class="day"></td></tr></tbody></table> */}
                 </div>
                 <div className='bills-header'>Upcoming Bills</div>
